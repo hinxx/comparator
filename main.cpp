@@ -447,6 +447,30 @@ int main(int argc, char const *argv[]) {
         assert(ret == -1);
     }
 
+    {
+        // A > B
+        Slice a = make_slice(10, "a1", 2);
+        Slice b = make_slice(10, "b2", 2);
+        int ret = comparator(a, b);
+        assert(ret == -1);
+    }
+
+    {
+        // A > B
+        Slice a = make_slice(10, "d1", 2);
+        Slice b = make_slice(10, "z9", 2);
+        int ret = comparator(a, b);
+        assert(ret == -1);
+    }
+
+    {
+        // A > B
+        Slice a = make_slice(10, "z9", 2);
+        Slice b = make_slice(11, "a1", 2);
+        int ret = comparator(a, b);
+        assert(ret == -1);
+    }
+
 
     return 0;
 }
